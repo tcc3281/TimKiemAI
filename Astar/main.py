@@ -54,8 +54,10 @@ def read_file(filename):
     while line:
         graph.connected(line[0], line[1], int(line[2]))
         line = file.readline().split()
+
+    start,end=file.readline().split()
     file.close()
-    return graph
+    return graph,start,end
 
 
 def Astar(graph, start, end):
@@ -119,6 +121,6 @@ def printfile(filename: str, content: str):
 
 
 if __name__ == '__main__':
-    graph = read_file("input.txt")
-    res = Astar(graph, "A", "B")
+    graph,start,end = read_file("input.txt")
+    res = Astar(graph, start, end)
     printfile("output.txt", res)

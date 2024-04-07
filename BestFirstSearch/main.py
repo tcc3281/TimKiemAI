@@ -1,11 +1,14 @@
 from collections import defaultdict
-from tabulate import tabulate
 from queue import PriorityQueue
+
+from tabulate import tabulate
 
 
 def readfile(s: str):
     file = open(s, "r")
-    k = file.readline()
+
+    start, end = file.readline().split()
+    k=file.readline()
     edges = defaultdict(list)
     while k != '\n':
         a, b = k.split()
@@ -18,7 +21,7 @@ def readfile(s: str):
         w[a[0]] = int(b)
         k = file.readline()
     file.close()
-    return [edges, w]
+    return [edges, w, start, end]
 
 
 def bestfirstsearch(edges: defaultdict[list], weights: defaultdict[int], start: str, end: str):
@@ -63,6 +66,6 @@ def printfile(filename: str, content: str):
 
 
 if __name__ == '__main__':
-    edges, weights = readfile("input.txt")
-    res = bestfirstsearch(edges, weights, "A", "B")
+    edges, weights,start,end = readfile("input.txt")
+    res = bestfirstsearch(edges, weights, start, end)
     printfile("output.txt", res)

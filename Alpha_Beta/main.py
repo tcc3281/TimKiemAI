@@ -61,6 +61,7 @@ def solve(root, isMax=True):
     return res
 
 
+
 if __name__ == '__main__':
     root = readfile("input.txt")
     print(solve(root, False))
