@@ -92,7 +92,7 @@ if __name__ == '__main__':
     cm=cm[0]+ '1' if cm[1]=='0' else cm[0]+ '0'
     L.append(cm)
     init = L.copy()
-    parent["P0"]=["None"]
+    parent[cm]=["None"]
     i = 0
     visited = set()
     res=solve(L, visited, 0, simple,parent)
